@@ -157,7 +157,7 @@ class Wp_Do {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
-	}
+    }
 
 	/**
 	 * Register all of the hooks related to the public-facing functionality
