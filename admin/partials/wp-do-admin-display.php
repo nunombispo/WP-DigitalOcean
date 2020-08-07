@@ -34,7 +34,7 @@
         do_settings_sections($this->plugin_name);
         ?>
 
-
+        <br>
         <fieldset>
             <p>Please input here your Digital Ocean API Key</p>
             <legend class="screen-reader-text"><span><?php _e('Input here your Digital Ocean API Key', $this->plugin_name); ?></span></legend>
