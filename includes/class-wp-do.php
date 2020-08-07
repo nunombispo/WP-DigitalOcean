@@ -157,7 +157,7 @@ class Wp_Do {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
-		// Add admin menu
+		// Add settings menu
         $this->loader->add_action( 'admin_menu', $plugin_admin, 'addPluginAdminMenu' );
 
         // Add Settings link to the plugin
