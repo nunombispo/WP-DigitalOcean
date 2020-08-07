@@ -52,7 +52,8 @@ class Wp_Do_Admin {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 
-	}
+        add_action('admin_menu', array( $this, 'addPluginAdminMenu' ), 9);
+    }
 
 	/**
 	 * Register the stylesheets for the admin area.
@@ -106,51 +107,42 @@ class Wp_Do_Admin {
      *
      **/
 
-    /**
-     * Register the administration menu for this plugin into the WordPress Dashboard menu.
-     *
-     * @since    1.0.0
-     */
+    public function addPluginAdminMenu() {
+//add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
+        add_menu_page(  $this->plugin_name, 'Plugin Name', 'administrator', $this->plugin_name, array( $this, 'displayPluginAdminDashboard' ), 'dashicons-chart-area', 26 );
 
-    public function add_plugin_admin_menu() {
+//add_submenu_page( '$parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function );
+        add_submenu_page( $this->plugin_name, 'Plugin Name Settings', 'Settings', 'administrator', $this->plugin_name.'-settings', array( $this, 'displayPluginAdminSettings' ));
+    }
 
-        /*
-         * Add a settings page for this plugin to the Settings menu.
-         *
-         * NOTE:  Alternative menu locations are available via WordPress administration menu functions.
-         *
-         *        Administration Menus: http://codex.wordpress.org/Administration_Menus
-         *
-         */
-        add_options_page( 'WP Digital Ocean', 'WP Digital Ocean', 'Admin', $this->plugin_name, array($this, 'display_plugin_setup_page')
+    public function displayPluginAdminDashboard() {
+        require_once 'partials'.$this->plugin_name.'-admin-display.php';
+    }
+
+    public function displayPluginAdminSettings() {
+        // set this var to be used in the settings-display view
+        $active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'general';
+        if(isset($_GET['error_message'])){
+            add_action('admin_notices', array($this,'pluginNameSettingsMessages'));
+            do_action( 'admin_notices', $_GET['error_message'] );
+        }
+        require_once 'partials/'.$this->plugin_name.'-admin-settings-display.php';
+    }
+
+    public function pluginNameSettingsMessages($error_message){
+        switch ($error_message) {
+            case '1':
+                $message = __( 'There was an error adding this setting. Please try again.  If this persists, shoot us an email.', 'my-text-domain' );
+                $err_code = esc_attr( 'plugin_name_example_setting' );
+                $setting_field = 'plugin_name_example_setting';
+                break;
+        }
+        $type = 'error';
+        add_settings_error(
+            $setting_field,
+            $err_code,
+            $message,
+            $type
         );
     }
-
-    /**
-     * Add settings action link to the plugins page.
-     *
-     * @since    1.0.0
-     */
-
-    public function add_action_links( $links ) {
-        /*
-        *  Documentation : https://codex.wordpress.org/Plugin_API/Filter_Reference/plugin_action_links_(plugin_file_name)
-        */
-        $settings_link = array(
-            '<a href="' . admin_url( 'options-general.php?page=' . $this->plugin_name ) . '">' . __('Settings', $this->plugin_name) . '</a>',
-        );
-        return array_merge(  $settings_link, $links );
-
-    }
-
-    /**
-     * Render the settings page for this plugin.
-     *
-     * @since    1.0.0
-     */
-
-    public function display_plugin_setup_page() {
-        include_once( 'partials/wp-cbf-admin-display.php' );
-    }
-
 }
