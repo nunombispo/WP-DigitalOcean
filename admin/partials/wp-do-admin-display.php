@@ -16,7 +16,7 @@
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
 <div class="wrap">
 
-    <h2 class="nav-tab-wrapper">Clean up</h2>
+    <h2><?php echo esc_html(get_admin_page_title()); ?></h2>
 
     <form method="post" name="cleanup_options" action="options.php">
 
