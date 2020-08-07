@@ -114,7 +114,7 @@ class Wp_Do_Admin {
         //add_submenu_page( '$parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function );
         add_submenu_page( $this->plugin_name, 'WP Digital Ocean Settings', 'Settings', 'administrator', $this->plugin_name.'-settings', array( $this, 'displayPluginAdminSettings' ));
 
-        add_options_page( 'WP Cleanup and Base Options Functions Setup', 'WP Cleanup', 'manage_options', $this->plugin_name, array($this, 'display_plugin_setup_page');
+        add_options_page( 'WP Cleanup and Base Options Functions Setup', 'WP Cleanup', 'manage_options', $this->plugin_name, array($this, 'display_plugin_setup_page'));
 
     }
 
