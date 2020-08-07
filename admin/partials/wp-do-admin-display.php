@@ -25,7 +25,7 @@
         $options = get_option($this->plugin_name);
 
         // Cleanup
-        $DigitalOceanApiKey = $options['$DigitalOceanApiKey'];
+        $DigitalOceanApiKey = $options['DigitalOceanApiKey'];
 
         ?>
 
