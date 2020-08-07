@@ -114,9 +114,18 @@ class Wp_Do_Admin {
         //add_submenu_page( '$parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function );
         add_submenu_page( $this->plugin_name, 'WP Digital Ocean Settings', 'Settings', 'administrator', $this->plugin_name.'-settings', array( $this, 'displayPluginAdminSettings' ));
 
-        add_options_page( 'WP Cleanup and Base Options Functions Setup', 'WP Cleanup', 'manage_options', $this->plugin_name, array($this, 'display_plugin_setup_page'));
+        /*add_options_page( 'WP Cleanup and Base Options Functions Setup', 'WP Cleanup', 'manage_options', $this->plugin_name, array($this, 'display_plugin_setup_page'));*/
 
     }
 
+    public function add_action_links( $links ) {
+        /*
+        *  Documentation : https://codex.wordpress.org/Plugin_API/Filter_Reference/plugin_action_links_(plugin_file_name)
+        */
+        $settings_link = array(
+            '<a href="' . admin_url( 'options-general.php?page=' . $this->plugin_name ) . '">' . __('Settings', $this->plugin_name) . '</a>',
+        );
+        return array_merge(  $settings_link, $links );
 
+    }
 }
