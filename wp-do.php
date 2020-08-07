@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       WP Digital Ocean
  * Plugin URI:        https://github.com/nunombispo/WP-DigitalOcean
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       This plugin provides an interface to the Digital Ocean APIs
  * Version:           1.0.0
  * Author:            Nuno Bispo
  * Author URI:        bispo-mobile.net
