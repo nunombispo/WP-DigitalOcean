@@ -52,7 +52,7 @@ class Wp_Do_Admin {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 
-        add_action('admin_menu', array( $this, 'addPluginAdminMenu' ), 9);
+
     }
 
 	/**
