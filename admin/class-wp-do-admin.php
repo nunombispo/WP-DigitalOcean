@@ -138,7 +138,7 @@ class Wp_Do_Admin {
         $valid = array();
 
         //Cleanup
-        $valid['DigitalOceanApiKey'] = true;
+        $valid['DigitalOceanApiKey'] = $input['DigitalOceanApiKey'] ;
 
         return $valid;
     }
