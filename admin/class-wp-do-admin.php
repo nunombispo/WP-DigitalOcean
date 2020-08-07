@@ -111,7 +111,7 @@ class Wp_Do_Admin {
         //add_submenu_page( '$parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function );
         //add_submenu_page( $this->plugin_name, 'WP Digital Ocean Settings', 'Settings', 'administrator', $this->plugin_name.'-settings', array( $this, 'displayPluginAdminSettings' ));
 
-        add_options_page( 'WP Digital Ocean', 'WP Digital Ocean Settings', 'manage_options', $this->plugin_name, array($this, 'display_plugin_setup_page'));
+        add_options_page( 'WP Digital Ocean', 'WP Digital Ocean', 'manage_options', $this->plugin_name, array($this, 'display_plugin_setup_page'));
 
     }
 
@@ -138,12 +138,7 @@ class Wp_Do_Admin {
         $valid = array();
 
         //Cleanup
-        $valid['cleanup'] = (isset($input['cleanup']) && !empty($input['cleanup'])) ? 1 : 0;
-        $valid['comments_css_cleanup'] = (isset($input['comments_css_cleanup']) && !empty($input['comments_css_cleanup'])) ? 1: 0;
-        $valid['gallery_css_cleanup'] = (isset($input['gallery_css_cleanup']) && !empty($input['gallery_css_cleanup'])) ? 1 : 0;
-        $valid['body_class_slug'] = (isset($input['body_class_slug']) && !empty($input['body_class_slug'])) ? 1 : 0;
-        $valid['jquery_cdn'] = (isset($input['jquery_cdn']) && !empty($input['jquery_cdn'])) ? 1 : 0;
-        $valid['cdn_provider'] = esc_url($input['cdn_provider']);
+        //$valid['$DigitalOceanApiKey'] = esc_($input['DigitalOceanApiKey']);
 
         return $valid;
     }
