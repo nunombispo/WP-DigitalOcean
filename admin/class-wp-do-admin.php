@@ -108,11 +108,14 @@ class Wp_Do_Admin {
      **/
 
     public function addPluginAdminMenu() {
-//add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
-        add_menu_page(  $this->plugin_name, 'Plugin Name', 'administrator', $this->plugin_name, array( $this, 'displayPluginAdminDashboard' ), 'dashicons-chart-area', 26 );
+        //add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function, $icon_url, $position );
+        add_menu_page(  $this->plugin_name, 'WP Digital Ocean', 'administrator', $this->plugin_name, array( $this, 'displayPluginAdminDashboard' ));
 
-//add_submenu_page( '$parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function );
-        add_submenu_page( $this->plugin_name, 'Plugin Name Settings', 'Settings', 'administrator', $this->plugin_name.'-settings', array( $this, 'displayPluginAdminSettings' ));
+        //add_submenu_page( '$parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function );
+        add_submenu_page( $this->plugin_name, 'WP Digital Ocean Settings', 'Settings', 'administrator', $this->plugin_name.'-settings', array( $this, 'displayPluginAdminSettings' ));
+
+        add_options_page( 'WP Cleanup and Base Options Functions Setup', 'WP Cleanup', 'manage_options', $this->plugin_name, array($this, 'display_plugin_setup_page')
+
     }
 
 
