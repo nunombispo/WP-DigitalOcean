@@ -20,6 +20,8 @@
 
     <form method="post" name="cleanup_options" action="options.php">
 
+        <?php settings_fields($this->plugin_name); ?>
+
         <!-- remove some meta and generators from the <head> -->
         <fieldset>
             <legend class="screen-reader-text"><span>Clean WordPress head section</span></legend>
