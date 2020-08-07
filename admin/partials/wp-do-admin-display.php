@@ -36,7 +36,7 @@
 
 
         <fieldset>
-            <p>Digital Ocean API Key</p>
+            <p>Please input here your Digital Ocean API Key</p>
             <legend class="screen-reader-text"><span><?php _e('Input your Digital Ocean API Key', $this->plugin_name); ?></span></legend>
             <input type="text" class="regular-text" id="<?php echo $this->plugin_name; ?>-DigitalOceanApiKey" name="<?php echo $this->plugin_name; ?>[DigitalOceanApiKey]" value="<?php if(!empty($DigitalOceanApiKey)) echo $DigitalOceanApiKey; ?>"/>
         </fieldset>
